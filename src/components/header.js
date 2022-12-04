@@ -1,16 +1,10 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 
 const Header = () => (
   <header className="header">
     <Link className="header-logo" to="/">
-      <StaticImage
-        src="../images/zenith-logo.png"
-        alt="logo zenith"
-        width={120}
-        height={120}
-      />
+        {/*Voeg hier het logo toe */}
     </Link>
     <nav className="header-nav">
       <ul>

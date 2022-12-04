@@ -7,7 +7,7 @@ const LatestNews = () => {
     allWpArticle: { edges: articles },
   } = useStaticQuery(graphql`
     query {
-      allWpArticle(limit: 3, sort: { order: DESC, fields: date }) {
+      allWpArticle(limit: 6, sort: { order: DESC, fields: date }) {
         edges {
           node {
             id
@@ -33,7 +33,7 @@ const LatestNews = () => {
     <section className="flex-container">
       <h1>Latest News</h1>
       {articles.map(({ node }) => {
-        return <Article className="flex-item" key={node.id} article={node} />
+        return <Article key={node.id} article={node} />
       })}
     </section>
   )

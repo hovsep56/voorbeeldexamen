@@ -1,5 +1,4 @@
 import React from "react"
-import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 
 const Footer = ({ siteTitle }) => {
@@ -7,12 +6,7 @@ const Footer = ({ siteTitle }) => {
     <section className="footer">
       <div className="footer-logo">
         <Link to="/">
-          <StaticImage
-            src="../images/zenith-logo.png"
-            alt="logo zenith"
-            width={150}
-            height={150}
-          />
+          {/*Voeg hier het logo toe */}
         </Link>
       </div>
       <div className="footer-info">

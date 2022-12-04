@@ -18,7 +18,7 @@ const IndexPage = ({
   return (
     <Layout>
       <Seo title="Home" />
-      <HeaderArticle isHeaderArticle={true} article={headerArticle} />
+      <HeaderArticle article={headerArticle} />
       <LatestNews />
       <Newsletter newsletter={newsletterFields}/>
     </Layout>
@@ -29,8 +29,6 @@ export const query = graphql`
   query {
     wpPage(slug: { eq: "home" }) {
       homePageFields {
-        title
-        description
         headerArticle {
           ... on WpArticle {
             id
