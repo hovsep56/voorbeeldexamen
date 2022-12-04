@@ -19,16 +19,6 @@ const Header = () => (
             Home
           </Link>
         </li>
-        <li>
-          <Link activeClassName="active" to="/economy">
-            Economy
-          </Link>
-        </li>
-        <li>
-          <Link activeClassName="active" to="/culture">
-            Culture
-          </Link>
-        </li>
       </ul>
     </nav>
   </header>

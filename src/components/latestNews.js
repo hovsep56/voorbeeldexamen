@@ -1,42 +1,42 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import Article from './article';
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import Article from "./article"
 
 const LatestNews = () => {
-	const {
-		allWpArticle: { edges: articles },
-	} = useStaticQuery(graphql`
-		query {
-			allWpArticle(limit: 3, sort: { order: DESC, fields: date }) {
-				edges {
-					node {
-						id
-						slug
-						title
-						articleFields {
-							author
-							image {
-								altText
-								localFile {
-									childImageSharp {
-										gatsbyImageData(placeholder: BLURRED)
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	`);
-	return (
-		<section>
-			<h1>Latest News</h1>
-			{articles.map(({ node: article }) => {
-				return <Article key={article.id} article={article} />;
-			})}
-		</section>
-	);
-};
+  const {
+    allWpArticle: { edges: articles },
+  } = useStaticQuery(graphql`
+    query {
+      allWpArticle(limit: 3, sort: { order: DESC, fields: date }) {
+        edges {
+          node {
+            id
+            slug
+            articleMeta {
+              title
+              author
+              picture {
+                altText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(placeholder: BLURRED)
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+  return (
+    <section className="flex-container">
+      <h1>Latest News</h1>
+      {articles.map(({ node }) => {
+        return <Article className="flex-item" key={node.id} article={node} />
+      })}
+    </section>
+  )
+}
 
-export default LatestNews;
+export default LatestNews

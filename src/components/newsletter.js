@@ -4,8 +4,8 @@ const Newsletter = ({ newsletter }) => {
   return (
     <article className="newsletter">
       <h3>{newsletter.title}</h3>
-      <p>{newsletter.description}</p>
-      <a href={newsletter.inscribeLink.url}>{newsletter.inscribeLink.title}</a>
+      <p>{newsletter.information}</p>
+      <a href={newsletter.subscribeLink.url}>{newsletter.subscribeLink.title}</a>
     </article>
   )
 }

@@ -2,18 +2,16 @@ import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 
-const headerArticle = ({
+const Article = ({
   article: {
     slug,
-    title,
-    articleFields: { author, image },
+    articleMeta: { title, author, picture },
   },
 }) => {
-  const picture = getImage(image.localFile)
-
+  const image = getImage(picture.localFile)
   return (
     <article className="article">
-      <GatsbyImage image={picture} alt={image.altText} />
+      <GatsbyImage image={image} alt={picture.altText} />
       <h2>{title}</h2>
       <p>Written by {author}</p>
       <Link className="link" to={`/articles/${slug}`}>
@@ -23,4 +21,4 @@ const headerArticle = ({
   )
 }
 
-export default headerArticle
+export default Article

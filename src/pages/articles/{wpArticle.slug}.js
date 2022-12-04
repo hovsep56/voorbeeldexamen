@@ -8,28 +8,28 @@ import LatestNews from '../../components/latestNews';
 
 const ArticleTemplate = ({
 	data: {
-		wpArticle: { articleFields: article, topics },
+		wpArticle: { articleMeta, topics },
 	},
 }) => {
-	const picture = getImage(article.image.localFile);
+	const image = getImage(articleMeta.picture.localFile);
 
 	return (
-		<Layout>
-			<Seo title={`Zenith | ${article.title}`} />
+		<Layout className="grid">
+			<Seo title={`Zenith | ${articleMeta.title}`} />
 
 			<section className='grid-section'>
 				<section className='article-template'>
-					<GatsbyImage image={picture} alt={article.image.altText} />
+					<GatsbyImage image={image} alt={articleMeta.picture.altText} />
 					<div className='article-template-topics'>
 						{topics.nodes.map(({ name }) => (
 							<span>{name}</span>
 						))}
 					</div>
-					<h1>{article.title}</h1>
-					<p className='article-template-author'>Written by {article.author}</p>
+					<h1>{articleMeta.title}</h1>
+					<p className='article-template-author'>Written by {articleMeta.author}</p>
 					<article
 						className='article-template-body'
-						dangerouslySetInnerHTML={{ __html: article.body }}
+						dangerouslySetInnerHTML={{ __html: articleMeta.body }}
 					/>
 				</section>
 			</section>
@@ -42,11 +42,11 @@ const ArticleTemplate = ({
 export const query = graphql`
 	query ($id: String) {
 		wpArticle(id: { eq: $id }) {
-			articleFields {
+			articleMeta {
 				title
 				author
 				body
-				image {
+				picture {
 					altText
 					localFile {
 						childImageSharp {

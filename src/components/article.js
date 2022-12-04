@@ -5,15 +5,13 @@ import { Link } from "gatsby"
 const Article = ({
   article: {
     slug,
-    title,
-    articleFields: { author, image },
+    articleMeta: { title, author, picture },
   },
 }) => {
-  const picture = getImage(image.localFile)
-
+  const image = getImage(picture.localFile)
   return (
-    <article className="article">
-      <GatsbyImage image={picture} alt={image.altText} />
+    <article className="article flex-item">
+      <GatsbyImage image={image} alt={picture.altText} />
       <h3>{title}</h3>
       <p>Written by {author}</p>
       <Link className="link" to={`/articles/${slug}`}>
