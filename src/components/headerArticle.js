@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-const Article = ({
+const HeaderArticle = ({
   article: {
     slug,
     articleMeta: { title, author, picture },
@@ -19,4 +19,4 @@ const Article = ({
   )
 }
 
-export default Article
+export default HeaderArticle

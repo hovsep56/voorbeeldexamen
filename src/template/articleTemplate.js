@@ -1,16 +1,9 @@
 import * as React from "react"
-import { graphql } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
-import LatestNews from "../../components/latestNews"
 
-const ArticleTemplate = ({
-  data: {
-    wpArticle: { articleMeta, topics },
-  },
-}) => {
+const ArticleTemplate = () => {
   return (
     <Layout className="grid">
       <Seo title={`Zenith | ${articleMeta.title}`} />
@@ -36,28 +29,3 @@ const ArticleTemplate = ({
     </Layout>
   )
 }
-export const query = graphql`
-  query ($id: String) {
-    wpArticle(id: { eq: $id }) {
-      articleMeta {
-        title
-        author
-        body
-        picture {
-          altText
-          localFile {
-            childImageSharp {
-              gatsbyImageData(placeholder: BLURRED)
-            }
-          }
-        }
-      }
-      topics {
-        nodes {
-          name
-        }
-      }
-    }
-  }
-`
-export default ArticleTemplate
